@@ -1,27 +1,39 @@
-# BSAD 384 Term Project – Ottawa Housing Affordability Crisis
+# BSAD384 Term Project
 
-This project explores the housing affordability crisis in Ottawa by modeling key data relationships between residents, properties, occupations, cost-of-living indices, rental agreements, and city-level homelessness metrics.
+## Overview
+
+This project explores the housing affordability crisis in Ottawa by designing a relational database that models key factors contributing to the issue. The data structure supports analysis on residents, housing transactions, occupations, rental agreements, subsidies, homelessness, and cost-of-living metrics.
+
+The project includes:
+- A conceptual and logical ERD
+- A normalized database design
+- SQL queries for analysis
+- A backup of the full database and the create/insert SQL script
 
 ---
 
-## 📊 Entity-Relationship Diagrams
+## Conceptual & Logical Design
 
-### Conceptual Model  
+### Conceptual ERD
+
 ![Conceptual ERD](images/ERD-Conceptual.png)
 
-### Logical Model  
+---
+
+### Logical ERD
+
 ![Logical ERD](images/ERD-Logical.png)
 
 ---
 
-## 📁 Data Files
+## Database Files
 
-- [Term Project Database File (.bak)](https://stfxcamy.sharepoint.com/:u:/g/personal/x2022akx_stfx_ca/EaQAQZnJnjJPpq0vXC00qewBDyLvqlXgVi1_4hNgNOADvg)
-- [SQL Create Table & Insert Statements](https://stfxca-my.sharepoint.com/:u:/g/personal/x2022akx_stfx_ca/EUDbdE5IcZJDspc2jF-j5FcBnmy61EKet8dSSWuKKVWEwA)
+- 🔗 [Database Backup File (.bak)](https://stfxcamy.sharepoint.com/:u:/g/personal/x2022akx_stfx_ca/EaQAQZnJnjJPpq0vXC00qewBDyLvqlXgVi1_4hNgNOADvg)
+- 🔗 [Create Table + Insert Statements](https://stfxca-my.sharepoint.com/:u:/g/personal/x2022akx_stfx_ca/EUDbdE5IcZJDspc2jF-j5FcBnmy61EKet8dSSWuKKVWEwA)
 
 ---
 
-## 💡 Sample SQL Queries
+## Sample Queries
 
 ```sql
 -- Query 1: List all residents and their current rental agreement details
