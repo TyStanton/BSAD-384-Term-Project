@@ -12,7 +12,7 @@ This project focuses on the growing issue of housing affordability in Ottawa and
 ---
 
 ## Relational Model
-! [Relational Model of the City of Ottawa](RelationalModel)
+! [Relational Model of the City of Ottawa](RelationalModel.png)
 
 ---
 
