@@ -1,0 +1,68 @@
+﻿DROP TABLE IF EXISTS Rental_Agreement;
+DROP TABLE IF EXISTS Occupation;
+DROP TABLE IF EXISTS Property;
+DROP TABLE IF EXISTS Resident;
+DROP TABLE IF EXISTS City_Subsidy_Rate;
+
+
+CREATE TABLE City_Subsidy_Rate
+(
+    CityID INT NOT NULL,
+    City VARCHAR(50) NOT NULL,
+    Region VARCHAR(50) NOT NULL,
+    CityName VARCHAR(50) NOT NULL,
+    PRIMARY KEY (CityID)
+);
+
+
+CREATE TABLE Resident
+(
+    ResidentID INT NOT NULL,
+    Age INT NOT NULL,
+    Name VARCHAR(100) NOT NULL,
+    HousingStatus VARCHAR(50) NOT NULL,
+    StartDate DATE NOT NULL,
+    EndDate DATE,
+    PRIMARY KEY (ResidentID)
+);
+
+
+CREATE TABLE Property
+(
+    PropertyID INT NOT NULL,
+    PropertyType VARCHAR(50) NOT NULL,
+    HomelessRate DECIMAL(5,2) NOT NULL,
+    ResidentID INT,
+    SubsidyAmount DECIMAL(10,2) NOT NULL,
+    CityID INT NOT NULL,
+    PRIMARY KEY (PropertyID),
+    FOREIGN KEY (ResidentID) REFERENCES Resident(ResidentID),
+    FOREIGN KEY (CityID) REFERENCES City_Subsidy_Rate(CityID)
+);
+
+
+CREATE TABLE Rental_Agreement
+(
+    ResidentID INT NOT NULL,
+    PropertyID INT NOT NULL,
+    StartDate DATE NOT NULL,
+    EndDate DATE,
+    SubsidyAmount DECIMAL(10,2) NOT NULL,
+    DepositAmount DECIMAL(10,2) NOT NULL,
+    PaymentFrequency VARCHAR(20) NOT NULL,
+    PRIMARY KEY (ResidentID, PropertyID, StartDate),
+    FOREIGN KEY (ResidentID) REFERENCES Resident(ResidentID),
+    FOREIGN KEY (PropertyID) REFERENCES Property(PropertyID)
+);
+
+
+CREATE TABLE Occupation
+(
+    OccupationID INT NOT NULL,
+    JobTitle VARCHAR(100) NOT NULL,
+    StartDate DATE NOT NULL,
+    EndDate DATE,
+    ResidentID INT NOT NULL,
+    PRIMARY KEY (OccupationID),
+    FOREIGN KEY (ResidentID) REFERENCES Resident(ResidentID)
+);
