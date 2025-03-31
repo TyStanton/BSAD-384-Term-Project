@@ -33,33 +33,41 @@ LEFT JOIN Rental_Agreement ra
     ON r.ResidentID = ra.ResidentID 
     AND (ra.EndDate IS NULL OR ra.EndDate >= GETDATE());
 ```
-
--- Query 2: List all properties with their city and current resident name
+### Query 2
+List all properties with their city and current resident name.
+```
 SELECT p.PropertyID, p.PropertyType, c.CityName, r.Name AS CurrentResident
 FROM Property p
 JOIN City_Subsidy_Rate c 
     ON p.CityID = c.CityID
 LEFT JOIN Resident r 
     ON p.ResidentID = r.ResidentID;
-
--- Query 3: Calculate the total subsidy amount for each resident
+```
+### Query 3
+Calculate the total subsidy amount for each resident.
+```
 SELECT r.ResidentID, r.Name, SUM(ra.SubsidyAmount) AS TotalSubsidy
 FROM Resident r
 LEFT JOIN Rental_Agreement ra 
     ON r.ResidentID = ra.ResidentID
 GROUP BY r.ResidentID, r.Name;
-
--- Query 4: Find the average homeless rate for properties in each city
+```
+### Query 4
+Find the average homeless rate for properties in each city.
+```
 SELECT c.CityName, AVG(p.HomelessRate) AS AverageHomelessRate
 FROM Property p
 JOIN City_Subsidy_Rate c 
     ON p.CityID = c.CityID
 GROUP BY c.CityName;
-
--- Query 5: List residents who have had more than one occupation
+```
+### Query 5
+List residents who have had more than one occupation.
+```
 SELECT r.ResidentID, r.Name, COUNT(o.OccupationID) AS NumberOfOccupations
 FROM Resident r
 JOIN Occupation o 
     ON r.ResidentID = o.ResidentID
 GROUP BY r.ResidentID, r.Name
 HAVING COUNT(o.OccupationID) > 1;
+```
