@@ -24,14 +24,15 @@ This project focuses on the growing issue of housing affordability in Ottawa and
 ---
 
 ## Sample Queries
-
-```sql
--- Query 1: List all residents and their current rental agreement details
+### Query 1
+List all residents and their current rental agreement details.
+```
 SELECT r.ResidentID, r.Name, ra.PropertyID, ra.StartDate, ra.EndDate
 FROM Resident r
 LEFT JOIN Rental_Agreement ra 
     ON r.ResidentID = ra.ResidentID 
     AND (ra.EndDate IS NULL OR ra.EndDate >= GETDATE());
+```
 
 -- Query 2: List all properties with their city and current resident name
 SELECT p.PropertyID, p.PropertyType, c.CityName, r.Name AS CurrentResident
