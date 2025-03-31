@@ -6,12 +6,12 @@ This project focuses on the growing issue of housing affordability in Ottawa and
 
 ---
 
-### Entity Relational Model
+## Entity Relational Model
 
 
 ---
 
-### Relational Model
+## Relational Model
 
 
 ---
