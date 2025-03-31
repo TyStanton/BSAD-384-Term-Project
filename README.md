@@ -17,8 +17,8 @@ This project focuses on the growing issue of housing affordability in Ottawa and
 ---
 
 ## Source Code
-[Create Script (DDL)](Create Script.docx)
-[Populate Script (DDM)](Populate Script.docx))
+[Create Script](Create Script.docx)
+[Populate Script](Populate Script.docx))
 
 
 ---
