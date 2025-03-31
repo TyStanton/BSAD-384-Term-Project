@@ -1,0 +1,99 @@
+﻿DROP TABLE IF EXISTS Rental_Agreement;
+DROP TABLE IF EXISTS Occupation;
+DROP TABLE IF EXISTS Property;
+DROP TABLE IF EXISTS Resident;
+DROP TABLE IF EXISTS City_Subsidy_Rate;
+
+
+CREATE TABLE City_Subsidy_Rate
+(
+    CityID INT NOT NULL,
+    City VARCHAR(50) NOT NULL,
+    Region VARCHAR(50) NOT NULL,
+    CityName VARCHAR(50) NOT NULL,
+    PRIMARY KEY (CityID)
+);
+
+
+CREATE TABLE Resident
+(
+    ResidentID INT NOT NULL,
+    Age INT NOT NULL,
+    Name VARCHAR(100) NOT NULL,
+    HousingStatus VARCHAR(50) NOT NULL,
+    StartDate DATE NOT NULL,
+    EndDate DATE,
+    PRIMARY KEY (ResidentID)
+);
+
+
+CREATE TABLE Property
+(
+    PropertyID INT NOT NULL,
+    PropertyType VARCHAR(50) NOT NULL,
+    HomelessRate DECIMAL(5,2) NOT NULL,
+    ResidentID INT,
+    SubsidyAmount DECIMAL(10,2) NOT NULL,
+    CityID INT NOT NULL,
+    PRIMARY KEY (PropertyID),
+    FOREIGN KEY (ResidentID) REFERENCES Resident(ResidentID),
+    FOREIGN KEY (CityID) REFERENCES City_Subsidy_Rate(CityID)
+);
+
+
+CREATE TABLE Rental_Agreement
+(
+    ResidentID INT NOT NULL,
+    PropertyID INT NOT NULL,
+    StartDate DATE NOT NULL,
+    EndDate DATE,
+    SubsidyAmount DECIMAL(10,2) NOT NULL,
+    DepositAmount DECIMAL(10,2) NOT NULL,
+    PaymentFrequency VARCHAR(20) NOT NULL,
+    PRIMARY KEY (ResidentID, PropertyID, StartDate),
+    FOREIGN KEY (ResidentID) REFERENCES Resident(ResidentID),
+    FOREIGN KEY (PropertyID) REFERENCES Property(PropertyID)
+);
+
+
+CREATE TABLE Occupation
+(
+    OccupationID INT NOT NULL,
+    JobTitle VARCHAR(100) NOT NULL,
+    StartDate DATE NOT NULL,
+    EndDate DATE,
+    ResidentID INT NOT NULL,
+    PRIMARY KEY (OccupationID),
+    FOREIGN KEY (ResidentID) REFERENCES Resident(ResidentID)
+);
+
+
+INSERT INTO City_Subsidy_Rate (CityID, City, Region, CityName) VALUES
+(1, 'Halifax', 'Nova Scotia', 'Halifax'),
+(2, 'Toronto', 'Ontario', 'Toronto'),
+(3, 'Vancouver', 'British Columbia', 'Vancouver');
+
+
+INSERT INTO Resident (ResidentID, Age, Name, HousingStatus, StartDate, EndDate) VALUES
+(101, 30, 'Connor McDavid', 'Housed', '2023-01-01', NULL),
+(102, 25, 'Auston Matthews', 'Homeless', '2023-02-01', '2023-12-31'),
+(103, 40, 'Cale Makar', 'Housed', '2022-06-15', NULL);
+
+
+INSERT INTO Property (PropertyID, PropertyType, HomelessRate, ResidentID, SubsidyAmount, CityID) VALUES
+(201, 'Apartment', 5.5, 101, 500.00, 1),
+(202, 'House', 3.2, NULL, 300.00, 2),
+(203, 'Condo', 4.0, 103, 400.00, 3);
+
+
+INSERT INTO Rental_Agreement (ResidentID, PropertyID, StartDate, EndDate, SubsidyAmount, DepositAmount, PaymentFrequency) VALUES
+(101, 201, '2023-01-01', '2023-12-31', 200.00, 1000.00, 'Monthly'),
+(103, 203, '2022-06-15', NULL, 150.00, 800.00, 'Monthly'),
+(102, 202, '2023-02-01', '2023-06-30', 100.00, 500.00, 'Weekly');
+
+
+INSERT INTO Occupation (OccupationID, JobTitle, StartDate, EndDate, ResidentID) VALUES
+(301, 'Engineer', '2023-01-01', NULL, 101),
+(302, 'Teacher', '2023-02-01', '2023-11-30', 102),
+(303, 'Nurse', '2022-06-15', NULL, 103),
+(304, 'Consultant', '2024-01-01', NULL, 101);

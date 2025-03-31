@@ -1,0 +1,26 @@
+﻿INSERT INTO City_Subsidy_Rate (CityID, City, Region, CityName) VALUES
+(1, 'Halifax', 'Nova Scotia', 'Halifax'),
+(2, 'Toronto', 'Ontario', 'Toronto'),
+(3, 'Vancouver', 'British Columbia', 'Vancouver');
+GO
+INSERT INTO Resident (ResidentID, Age, Name, HousingStatus, StartDate, EndDate) VALUES
+(101, 30, 'Connor McDavid', 'Housed', '2023-01-01', NULL),
+(102, 25, 'Auston Matthews', 'Homeless', '2023-02-01', '2023-12-31'),
+(103, 40, 'Cale Makar', 'Housed', '2022-06-15', NULL);
+GO
+INSERT INTO Property (PropertyID, PropertyType, HomelessRate, ResidentID, SubsidyAmount, CityID) VALUES
+(201, 'Apartment', 5.5, 101, 500.00, 1),
+(202, 'House', 3.2, NULL, 300.00, 2),
+(203, 'Condo', 4.0, 103, 400.00, 3);
+GO
+INSERT INTO Rental_Agreement (ResidentID, PropertyID, StartDate, EndDate, SubsidyAmount, DepositAmount, PaymentFrequency) VALUES
+(101, 201, '2023-01-01', '2023-12-31', 200.00, 1000.00, 'Monthly'),
+(103, 203, '2022-06-15', NULL, 150.00, 800.00, 'Monthly'),
+(102, 202, '2023-02-01', '2023-06-30', 100.00, 500.00, 'Weekly');
+GO
+INSERT INTO Occupation (OccupationID, JobTitle, StartDate, EndDate, ResidentID) VALUES
+(301, 'Engineer', '2023-01-01', NULL, 101),
+(302, 'Teacher', '2023-02-01', '2023-11-30', 102),
+(303, 'Nurse', '2022-06-15', NULL, 103),
+(304, 'Consultant', '2024-01-01', NULL, 101);
+GO
