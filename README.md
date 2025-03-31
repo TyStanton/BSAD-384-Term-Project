@@ -2,34 +2,21 @@
 
 ## Overview
 
-This project explores the housing affordability crisis in Ottawa by designing a relational database that models key factors contributing to the issue. The data structure supports analysis on residents, housing transactions, occupations, rental agreements, subsidies, homelessness, and cost-of-living metrics.
-
-The project includes:
-- A conceptual and logical ERD
-- A normalized database design
-- SQL queries for analysis
-- A backup of the full database and the create/insert SQL script
+This project focuses on the growing issue of housing affordability in Ottawa and aims to address it through the design of a well-structured relational database. The system models key components of the housing ecosystem, including residents, properties, rental agreements, occupations and the city of Ottawa itself. It incorporates both a conceptual and logical data model to visualize relationships and ensure data normalization. The goal is to enable analysis that can inform decisions made by city officials, housing organizations, and social service providers. The database captures information such as resident demographics, employment history, rental details, subsidy distribution, and city-level homelessness rates. Sample SQL queries are included to showcase the kind of insights that can be generated, such as total subsidy amounts, average homelessness rates by city, and residents with multiple occupations. The project is designed for analytical and educational purposes and does not currently integrate real-time data sources or user-facing applications. It does not attempt to provide policy recommendations or financial forecasting. The scope is limited to database design, ER diagram development, and query generation for analysis. The project leverages realistic data structures and relationships to simulate a functioning housing information system. By organizing data around residents and their housing journeys, it highlights the complexity of affordability and support systems in urban areas. Ultimately, this project serves as a foundation for further work in housing data analysis and informed policymaking. 
 
 ---
 
-## Conceptual & Logical Design
+### Entity Relational Model
 
-### Conceptual ERD
-
-![Conceptual ERD](images/ERD-Conceptual.png)
 
 ---
 
-### Logical ERD
+### Relational Model
 
-![Logical ERD](images/ERD-Logical.png)
 
 ---
 
-## Database Files
-
-- 🔗 [Database Backup File (.bak)](https://stfxcamy.sharepoint.com/:u:/g/personal/x2022akx_stfx_ca/EaQAQZnJnjJPpq0vXC00qewBDyLvqlXgVi1_4hNgNOADvg)
-- 🔗 [Create Table + Insert Statements](https://stfxca-my.sharepoint.com/:u:/g/personal/x2022akx_stfx_ca/EUDbdE5IcZJDspc2jF-j5FcBnmy61EKet8dSSWuKKVWEwA)
+## Source Code
 
 ---
 
