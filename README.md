@@ -1,4 +1,3 @@
-# BSAD384 Term Project
 
 ## Ottawa's Housing and Affordability Crisis Operational Database
 
